@@ -1,5 +1,6 @@
 package fasal.haryana.gov.kotlinmvvm.mvvm.ui.auth
 
+import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModel
 
@@ -18,10 +19,11 @@ class AuthViewModel :ViewModel() {
         }
 //            success
             authListner?.onSuccess()
+    }
 
-
-
-
-
+    fun onSignUpbtn(view: View){
+        Intent(view.context,SignUpActivity::class.java).also{
+            view.context.startActivity(it)
+        }
     }
 }

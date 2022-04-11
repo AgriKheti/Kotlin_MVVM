@@ -6,6 +6,8 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiInterface {
+
+
     @POST("api/User")
     fun callSendOtp(@Body jsonObject: JsonObject?): Call<JsonObject?>?
 

@@ -125,6 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/linearLayout2"
                 android:layout_centerHorizontal="true"
+                android:onClick="@{viewmodel.onSignUpbtn}"
                 android:layout_marginTop="12dp"
                 android:text="Don't have an account?\nSign Up Here"
                 android:textAlignment="center"
