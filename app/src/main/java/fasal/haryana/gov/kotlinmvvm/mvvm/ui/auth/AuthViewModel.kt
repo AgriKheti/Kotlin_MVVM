@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModel
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories.UserRepository
+import fasal.haryana.gov.kotlinmvvm.mvvm.utils.Coroutines
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.snackbar
 
 class AuthViewModel :ViewModel() {
@@ -40,8 +41,18 @@ class AuthViewModel :ViewModel() {
         // we should avoid it
         // it is tight coupling
 
-        val loginResponse = UserRepository().sendOtp(email!!)
-        authListner?.onSuccess(loginResponse)
+
+        /*calling it from coroutines*/
+
+        Coroutines.main {
+            val response = UserRepository().sendOtp(email!!)
+            if (response.isSuccessful){
+                authListner?.onSuccess(response)
+            }
+        }
+
+//        val loginResponse = UserRepository().sendOtp(email!!)
+//        authListner?.onSuccess(loginResponse)
 
     }
 }
