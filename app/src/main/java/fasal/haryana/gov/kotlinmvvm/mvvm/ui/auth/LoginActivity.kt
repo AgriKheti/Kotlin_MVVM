@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity(),AuthListner {
 //        setContentView(R.layout.activity_login)
 
         val binding :ActivityLoginBinding = DataBindingUtil.setContentView(this,R.layout.activity_login)
-        val viewmodel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
+        val viewmodel = ViewModelProvider(this).get(AuthViewModel::class.java)
         binding.viewmodel=viewmodel
         viewmodel.authListner=this
     }
