@@ -82,7 +82,7 @@
                     android:drawableLeft="@drawable/ic_email"
                     android:drawablePadding="16dp"
                     android:text="@={viewmodel.email}"
-                    android:hint="belal@gmail.com"
+                    android:hint="User Id"
                     android:inputType="textEmailAddress"
                     android:padding="12dp" />
 
@@ -95,8 +95,8 @@
                     android:background="@drawable/edit_text_round_gray_background"
                     android:drawableLeft="@drawable/ic_lock"
                     android:drawablePadding="16dp"
-                    android:hint="password"
-                    android:inputType="textPassword"
+                    android:hint="O T P "
+                    android:inputType="phone"
                     android:padding="12dp" />
 
                 <TextView
@@ -109,8 +109,18 @@
                     android:textColor="@color/purple_700" />
 
                 <Button
+                    android:id="@+id/button_send_otp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Send Otp"
+                    android:onClick="@{viewmodel::onSendOtp}"
+                    android:textAllCaps="false" />
+
+                <Button
                     android:id="@+id/button_sign_in"
                     android:layout_width="150dp"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="Sign In"

@@ -3,6 +3,8 @@ package fasal.haryana.gov.kotlinmvvm.mvvm.ui.auth
 import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModel
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories.UserRepository
+import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.snackbar
 
 class AuthViewModel :ViewModel() {
 
@@ -18,12 +20,28 @@ class AuthViewModel :ViewModel() {
             return
         }
 //            success
-            authListner?.onSuccess()
+
     }
 
     fun onSignUpbtn(view: View){
         Intent(view.context,SignUpActivity::class.java).also{
             view.context.startActivity(it)
         }
+    }
+    /*sending otp for login*/
+    fun onSendOtp(view: View){
+
+        if (email.isNullOrEmpty()){
+            view.snackbar("Enter User Id")
+            return
+        }
+        authListner?.onStarted()
+        // this is a bad practices we are creating a other class instanc in Viewmodel class
+        // we should avoid it
+        // it is tight coupling
+
+        val loginResponse = UserRepository().sendOtp(email!!)
+        authListner?.onSuccess(loginResponse)
+
     }
 }
