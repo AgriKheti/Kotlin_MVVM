@@ -10,7 +10,7 @@ class AuthViewModel :ViewModel() {
     var authListner:AuthListner? =null
 
     fun onLoginClickBtn(view:View){
-//        authListner?.onStarted()
+        authListner?.onStarted()
         if (email.isNullOrEmpty() || password.isNullOrEmpty()){
             authListner?.onFailure("All fileds are required ")
             /*show message*/
