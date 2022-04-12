@@ -90,7 +90,8 @@
                     android:id="@+id/edit_text_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@={viewmodel.password}"
+                    android:visibility="gone"
+                    android:text="@={viewmodel.otp}"
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/edit_text_round_gray_background"
                     android:drawableLeft="@drawable/ic_lock"
@@ -124,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="Sign In"
-                    android:onClick="@{viewmodel::onLoginClickBtn}"
+                    android:onClick="@{viewmodel::onSubmitOtpBtn}"
                     android:textAllCaps="false" />
 
             </LinearLayout>

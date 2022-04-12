@@ -11,6 +11,6 @@ import retrofit2.Response
 interface AuthListner {
 
     fun onStarted()
-    fun onSuccess(loginResponse: JsonObject)
+    fun onSuccess(loginResponse: JsonObject,key:String)
     fun onFailure(message:String)
 }

@@ -8,6 +8,8 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface MyApis {
@@ -26,4 +28,9 @@ interface MyApis {
                 .create(MyApis::class.java)
         }
     }
+
+    @POST("Login")
+    @FormUrlEncoded
+    suspend fun hitSubmitOtpApi(@Field ("grant_type") password:String,@Field("username") userid:String,
+    @Field("password") otp:String):JsonObject
 }

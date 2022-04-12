@@ -1,7 +1,9 @@
 package fasal.haryana.gov.kotlinmvvm.mvvm.ui.auth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
@@ -34,11 +36,18 @@ class LoginActivity : AppCompatActivity(),AuthListner {
         progress_bar.show()
 
     }
-    override fun onSuccess(loginResponse: JsonObject) {
+    override fun onSuccess(loginResponse: JsonObject,key:String) {
         progress_bar.hide()
 
-        if (loginResponse!= null){
+        if (loginResponse!= null && key.equals("otp")){
             showtoast(loginResponse.toString())
+            edit_text_password.visibility= View.VISIBLE
+            button_sign_in.visibility=View.VISIBLE
+        }else if (key.equals("login")){
+
+            Intent(this,SignUpActivity::class.java).also {
+                startActivity(it)
+            }
         }
 //        root_layout.snackbar("Login Success")
 //        progress_bar.hide()

@@ -10,17 +10,22 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.snackbar
 class AuthViewModel :ViewModel() {
 
     var email :String?=null
-    var password :String?=null
+    var otp :String?=null
     var authListner:AuthListner? =null
 
-    fun onLoginClickBtn(view:View){
+    fun onSubmitOtpBtn(view:View){
         authListner?.onStarted()
-        if (email.isNullOrEmpty() || password.isNullOrEmpty()){
+        if (email.isNullOrEmpty() || otp.isNullOrEmpty()){
             authListner?.onFailure("All fileds are required ")
             /*show message*/
             return
         }
+        /*hit submit otp from here*/
 //            success
+        Coroutines.main {
+            val response = UserRepository().submitOtp(email!!, otp!!)
+            authListner?.onSuccess(response ,"login")
+        }
 
     }
 
@@ -47,7 +52,7 @@ class AuthViewModel :ViewModel() {
         Coroutines.main {
             val response = UserRepository().sendOtp(email!!)
             if (response!=null)
-                authListner?.onSuccess(response)
+                authListner?.onSuccess(response,"otp")
 
             }
         }

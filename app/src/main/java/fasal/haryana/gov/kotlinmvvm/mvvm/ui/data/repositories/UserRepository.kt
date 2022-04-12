@@ -23,6 +23,10 @@ class UserRepository  {
 
     }
 
+    suspend fun submitOtp(userid: String,otp :String) :JsonObject{
+        return MyApis.invoke().hitSubmitOtpApi("password",userid,otp)
+    }
+
 
 
 //    fun sendOtp(userid:String):LiveData<User>{
