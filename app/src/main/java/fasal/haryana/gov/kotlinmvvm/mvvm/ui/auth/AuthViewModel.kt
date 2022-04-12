@@ -32,6 +32,7 @@ class AuthViewModel :ViewModel() {
     fun onSignUpbtn(view: View){
         Intent(view.context,SignUpActivity::class.java).also{
             view.context.startActivity(it)
+
         }
     }
     /*sending otp for login*/
@@ -45,7 +46,6 @@ class AuthViewModel :ViewModel() {
         // this is a bad practices we are creating a other class instanc in Viewmodel class
         // we should avoid it
         // it is tight coupling
-
 
         /*calling it from coroutines*/
 
