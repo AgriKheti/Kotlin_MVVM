@@ -1,4 +1,4 @@
-package fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network
+package fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses
 
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody

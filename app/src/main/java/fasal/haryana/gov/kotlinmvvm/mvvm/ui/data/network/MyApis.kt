@@ -1,5 +1,6 @@
 package fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network
 
+import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonObject
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities.User
 import okhttp3.ResponseBody
@@ -13,7 +14,7 @@ interface MyApis {
 
 
     @POST("api/User/sendotp")
-    suspend fun sendOtp(@Body userid: JsonObject) : Call<JsonObject>
+    suspend fun sendOtp(@Body userid: JsonObject) : JsonObject
 //    suspend fun sendOtp(@Body userid: JsonObject) : ResponseBody<User>
 
     companion object{

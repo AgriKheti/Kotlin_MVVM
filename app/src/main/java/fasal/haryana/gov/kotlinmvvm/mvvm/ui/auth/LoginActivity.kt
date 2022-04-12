@@ -3,15 +3,16 @@ package fasal.haryana.gov.kotlinmvvm.mvvm.ui.auth
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import com.google.gson.JsonObject
 import fasal.haryana.gov.kotlinmvvm.R
 import fasal.haryana.gov.kotlinmvvm.databinding.ActivityLoginBinding
-import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.hide
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.show
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.showtoast
 import kotlinx.android.synthetic.main.activity_login.*
+import retrofit2.Call
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity(),AuthListner {
@@ -33,11 +34,11 @@ class LoginActivity : AppCompatActivity(),AuthListner {
         progress_bar.show()
 
     }
-    override fun onSuccess(loginResponse: Response<AuthResponse>) {
+    override fun onSuccess(loginResponse: JsonObject) {
         progress_bar.hide()
 
-        if (loginResponse.isSuccessful){
-            showtoast("Otp Sent")
+        if (loginResponse!= null){
+            showtoast(loginResponse.toString())
         }
 //        root_layout.snackbar("Login Success")
 //        progress_bar.hide()

@@ -13,7 +13,7 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
 data class User (
     @SerializedName("status"  ) var status  : String? = null,
     @SerializedName("message" ) var message : String? = null,
-    @SerializedName("user"    ) var user    : AuthResponse? = null
+    @SerializedName("user"    ) var user    : String? = null
 //    @SerializedName("user"    ) var user    : String? = null
 
 )

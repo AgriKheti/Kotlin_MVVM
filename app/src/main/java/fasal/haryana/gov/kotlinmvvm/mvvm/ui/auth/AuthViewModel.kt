@@ -46,8 +46,9 @@ class AuthViewModel :ViewModel() {
 
         Coroutines.main {
             val response = UserRepository().sendOtp(email!!)
-            if (response.isSuccessful){
+            if (response!=null)
                 authListner?.onSuccess(response)
+
             }
         }
 
@@ -55,4 +56,3 @@ class AuthViewModel :ViewModel() {
 //        authListner?.onSuccess(loginResponse)
 
     }
-}

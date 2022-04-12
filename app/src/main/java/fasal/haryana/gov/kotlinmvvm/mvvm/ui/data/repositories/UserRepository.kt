@@ -1,20 +1,23 @@
 package fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories
 
+import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonObject
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities.User
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.MyApis
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.ApiResponse
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
+import retrofit2.Call
 import retrofit2.Response
 
-class UserRepository {
+class UserRepository  {
 
 
-    suspend fun sendOtp(userid: String):Response<User>{
+    suspend fun sendOtp(userid: String): JsonObject {
         /*here we are also creating instance of class in another class
         * this is not good practice
         * */
-
         var json = JsonObject()
+
         json.addProperty("userid",userid)
         return MyApis.invoke().sendOtp(json)
 

@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteOpenHelper
 )
 abstract class AppDatabase :RoomDatabase() {
 
-    abstract fun getUserDao(): UserDao
+//    abstract fun getUserDao(): UserDao
 
     /*creating database */
     companion object{
