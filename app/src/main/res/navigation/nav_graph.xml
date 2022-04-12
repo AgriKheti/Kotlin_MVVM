@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/actionSaveNote">
+
+    <fragment
+        android:id="@+id/actionSaveNote"
+        android:name="fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesUi.HomeFragment"
+        android:label="My Notes"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_addNoteFragment2"
+            app:destination="@id/actionAddNote" />
+    </fragment>
+    <fragment
+        android:id="@+id/actionAddNote"
+        android:name="fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesUi.AddNoteFragment"
+        android:label="Add note"
+        tools:layout="@layout/fragment_add_note">
+        <action
+            android:id="@+id/action_addNoteFragment_to_homeFragment"
+            app:destination="@id/actionSaveNote" />
+    </fragment>
+</navigation>

@@ -73,6 +73,25 @@
                 android:orientation="vertical"
                 android:padding="18dp">
 
+                <Button
+                    android:id="@+id/button_send_otp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="@{viewmodel::onSendOtp}"
+                    android:text="Send Otp"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/button_sign_in"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="@{viewmodel::onSubmitOtpBtn}"
+                    android:text="Sign In"
+                    android:textAllCaps="false"
+                    android:visibility="gone" />
+
                 <EditText
                     android:id="@+id/edit_text_email"
                     android:layout_width="match_parent"
@@ -81,52 +100,34 @@
                     android:background="@drawable/edit_text_round_gray_background"
                     android:drawableLeft="@drawable/ic_email"
                     android:drawablePadding="16dp"
-                    android:text="@={viewmodel.email}"
                     android:hint="User Id"
                     android:inputType="textEmailAddress"
-                    android:padding="12dp" />
+                    android:padding="12dp"
+                    android:text="@={viewmodel.email}" />
 
                 <EditText
                     android:id="@+id/edit_text_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone"
-                    android:text="@={viewmodel.otp}"
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/edit_text_round_gray_background"
                     android:drawableLeft="@drawable/ic_lock"
                     android:drawablePadding="16dp"
                     android:hint="O T P "
                     android:inputType="phone"
-                    android:padding="12dp" />
+                    android:padding="12dp"
+                    android:text="@={viewmodel.otp}"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/text_view_forget_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
+                    android:onClick="@{viewmodel::ToNotesscreen}"
                     android:text="Forget Password?"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/purple_700" />
-
-                <Button
-                    android:id="@+id/button_send_otp"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Send Otp"
-                    android:onClick="@{viewmodel::onSendOtp}"
-                    android:textAllCaps="false" />
-
-                <Button
-                    android:id="@+id/button_sign_in"
-                    android:layout_width="150dp"
-                    android:visibility="gone"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Sign In"
-                    android:onClick="@{viewmodel::onSubmitOtpBtn}"
-                    android:textAllCaps="false" />
 
             </LinearLayout>
 

@@ -3,6 +3,7 @@ package fasal.haryana.gov.kotlinmvvm.mvvm.ui.auth
 import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModel
+import fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesUi.HomeActivity
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories.UserRepository
 import fasal.haryana.gov.kotlinmvvm.mvvm.utils.Coroutines
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.snackbar
@@ -35,6 +36,10 @@ class AuthViewModel :ViewModel() {
 
         }
     }
+
+
+
+
     /*sending otp for login*/
     fun onSendOtp(view: View){
 
@@ -43,10 +48,11 @@ class AuthViewModel :ViewModel() {
             return
         }
         authListner?.onStarted()
+
+
         // this is a bad practices we are creating a other class instanc in Viewmodel class
         // we should avoid it
         // it is tight coupling
-
         /*calling it from coroutines*/
 
         Coroutines.main {
@@ -56,6 +62,14 @@ class AuthViewModel :ViewModel() {
 
             }
         }
+
+    fun ToNotesscreen(view: View){
+        Intent(view.context,HomeActivity::class.java).also {
+            view.context.startActivity(it)
+        }
+    }
+
+
 
 //        val loginResponse = UserRepository().sendOtp(email!!)
 //        authListner?.onSuccess(loginResponse)
