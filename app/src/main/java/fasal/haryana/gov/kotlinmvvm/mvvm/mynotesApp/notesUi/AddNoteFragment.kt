@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 
 class AddNoteFragment : BaseFragment() {
 
+    private var note:Notes?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +29,14 @@ class AddNoteFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        /*receving note here */
+        arguments?.let {
+
+
+            note= AddNoteFragmentArgs.fromBundle(it).note
+            title_tv.setText(note?.title)
+            description_tv.setText(note?.description)
+        }
 
         button_save.setOnClickListener { view->
             val title = title_tv.text.toString()
@@ -50,10 +59,22 @@ class AddNoteFragment : BaseFragment() {
             *
             * */
             launch {
-                val note = Notes(title,description)
+
                 context?.let {
-                    NotesDatabase(it).getNoteDao().addNote(note)
-                    it.message("Note Saved")
+                    /*for updating the note*/
+                    val mUpdateNote =Notes(title,description)
+                    note = Notes(title,description)
+
+                    if (note==null){
+                        /*mean new note is need to add*/
+                        NotesDatabase(it).getNoteDao().addNote(note!!)
+                        it.message("Note Saved")
+                    }else {
+                        /*existing note is updating*/
+                        NotesDatabase(it).getNoteDao().updateNote(mUpdateNote)
+                        it.message("Note Updated Successfully")
+
+                    }
                     val action = AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment()
                     Navigation.findNavController(view).navigate(action)
                 }

@@ -14,7 +14,7 @@
             android:id="@+id/action_homeFragment_to_addNoteFragment2"
             app:destination="@id/actionAddNote" />
     </fragment>
-    <fragment
+     <fragment
         android:id="@+id/actionAddNote"
         android:name="fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesUi.AddNoteFragment"
         android:label="Add note"
@@ -22,5 +22,10 @@
         <action
             android:id="@+id/action_addNoteFragment_to_homeFragment"
             app:destination="@id/actionSaveNote" />
+        <argument
+            app:argType="fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesdb.Notes"
+            android:name="Note"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>
