@@ -1,9 +1,6 @@
 package fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesdb
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 
 @Dao
@@ -25,4 +22,7 @@ interface NoteDao {
     /*to update the data*/
     @Update
     suspend fun updateNote(note: Notes)
+
+    @Delete
+    suspend fun deleteNote(note: Notes)
 }

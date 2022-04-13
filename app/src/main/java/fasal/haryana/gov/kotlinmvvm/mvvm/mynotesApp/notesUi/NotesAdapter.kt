@@ -32,7 +32,6 @@ class NotesAdapter(private val notes:List<Notes>): RecyclerView.Adapter<NotesAda
             val action = HomeFragmentDirections.actionHomeFragmentToAddNoteFragment2()
             action.note=notes[position]
             Navigation.findNavController(it).navigate(action)
-
         }
 
     }
