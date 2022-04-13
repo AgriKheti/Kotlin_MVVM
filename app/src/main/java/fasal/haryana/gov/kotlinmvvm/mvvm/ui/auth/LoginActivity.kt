@@ -5,17 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.google.gson.JsonObject
 import fasal.haryana.gov.kotlinmvvm.R
 import fasal.haryana.gov.kotlinmvvm.databinding.ActivityLoginBinding
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.hide
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.show
-import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.showtoast
+import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.message
 import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
-import retrofit2.Response
 
 class LoginActivity : AppCompatActivity(),AuthListner {
 
@@ -40,7 +37,7 @@ class LoginActivity : AppCompatActivity(),AuthListner {
         progress_bar.hide()
 
         if (loginResponse!= null && key.equals("otp")){
-            showtoast(loginResponse.toString())
+            message(loginResponse.toString())
             edit_text_password.visibility= View.VISIBLE
             button_sign_in.visibility=View.VISIBLE
         }else if (key.equals("login")){
@@ -53,7 +50,7 @@ class LoginActivity : AppCompatActivity(),AuthListner {
 //        progress_bar.hide()
     }
     override fun onFailure(message: String) {
-        showtoast(message)
+        message(message)
         progress_bar.hide()
     }
 }

@@ -11,8 +11,12 @@ interface NoteDao {
     /*here we will define function to transaction in database*/
 
     @Insert
-    fun addNote(note:Notes)
+    suspend fun addNote(note:Notes)
 
-    @Query("SELECT * FROM notes")
-     fun getAllnotes() : List<Notes>
+//    @Query("SELECT * FROM notes")
+//    suspend fun getAllnotes() : List<Notes>
+
+    /*to get the latest note at the top*/
+    @Query("SELECT * FROM notes ORDER BY id DESC")
+    suspend fun getAllnotes() : List<Notes>
 }

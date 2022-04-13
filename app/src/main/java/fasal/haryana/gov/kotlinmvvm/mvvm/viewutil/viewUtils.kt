@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.view.*
 
-fun Context.showtoast(message:String){
+fun Context.message(message:String){
     Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
 }
 
