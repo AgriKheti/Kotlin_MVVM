@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import fasal.haryana.gov.kotlinmvvm.R
 import fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesdb.Notes
 import fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesdb.NotesDatabase
@@ -28,7 +29,7 @@ class AddNoteFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
 
 
-        button_save.setOnClickListener {
+        button_save.setOnClickListener { view->
             val title = title_tv.text.toString()
             val description = description_tv.text.toString()
 
@@ -53,6 +54,8 @@ class AddNoteFragment : BaseFragment() {
                 context?.let {
                     NotesDatabase(it).getNoteDao().addNote(note)
                     it.message("Note Saved")
+                    val action = AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment()
+                    Navigation.findNavController(view).navigate(action)
                 }
 
             }
