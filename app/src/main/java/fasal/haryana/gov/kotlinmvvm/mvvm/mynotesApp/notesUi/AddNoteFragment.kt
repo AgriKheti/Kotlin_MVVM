@@ -69,11 +69,14 @@ class AddNoteFragment : BaseFragment() {
         }
     }
 
+
+    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.mymenu,menu)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.delete_menu -> if (note!=null) deleteNote() else context?.message("Cannote delete")
@@ -99,5 +102,10 @@ class AddNoteFragment : BaseFragment() {
             }.create().show()
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getActivity()?.invalidateOptionsMenu();
     }
 }
