@@ -50,15 +50,16 @@ class AddNoteFragment : BaseFragment() {
             launch {
                 context?.let {
                     /*for updating the note*/
-                    val mUpdateNote =Notes(title,description)
+                    val mNote =Notes(title,description)
+                    /*means receiving no values from the previous home fragment*/
                     if (note==null){
                         /*mean new note is need to add*/
-                        NotesDatabase(it).getNoteDao().addNote(mUpdateNote)
+                        NotesDatabase(it).getNoteDao().addNote(mNote)
                         it.message("Note Saved")
                     }else {
                         /*existing note is updating*/
-                            mUpdateNote.id = note!!.id
-                        NotesDatabase(it).getNoteDao().updateNote(mUpdateNote)
+                        mNote.id = note!!.id
+                        NotesDatabase(it).getNoteDao().updateNote(mNote)
                         it.message("Note Updated Successfully")
                     }
                     val action = AddNoteFragmentDirections.actionAddNoteFragmentToHomeFragment()
