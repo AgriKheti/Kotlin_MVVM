@@ -2,16 +2,17 @@ package fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities
 
 import android.content.Context
 import androidx.room.*
-import androidx.sqlite.db.SupportSQLiteOpenHelper
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
 
 
 @Database(
-    entities = [User::class],
+    entities = [User::class,AuthResponse::class],
     version = 1
 )
+
 abstract class AppDatabase :RoomDatabase() {
 
-//    abstract fun getUserDao(): UserDao
+    abstract fun getUserDao(): UserDao
 
     /*creating database */
     companion object{
@@ -33,6 +34,7 @@ abstract class AppDatabase :RoomDatabase() {
 
         private fun buildDatabase(context: Context) =Room.databaseBuilder(context.applicationContext
         ,AppDatabase::class.java,"MydatabaseName.db").build()
+
 
 
 

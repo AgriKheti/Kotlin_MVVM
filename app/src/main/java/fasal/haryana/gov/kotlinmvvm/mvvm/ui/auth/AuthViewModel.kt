@@ -5,18 +5,24 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesUi.HomeActivity
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories.UserRepository
+import fasal.haryana.gov.kotlinmvvm.mvvm.utils.ApiException
 import fasal.haryana.gov.kotlinmvvm.mvvm.utils.Coroutines
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.snackbar
 
-class AuthViewModel :ViewModel() {
+//this is called constructor injection , atleast once we need to create the instance that we will do in LoginActivity
+/*we will be using dependency injection as passing classes in constructor to avoid tight coupled*/
+class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
 
-    var email :String?=null
-    var otp :String?=null
-    var authListner:AuthListner? =null
+    var email: String? = null
+    var otp: String? = null
+    var authListner: AuthListner? = null
 
-    fun onSubmitOtpBtn(view:View){
+
+//    to check the details of logged in user
+//    fun getLoggedInUser()=userRepository.getUser()  // now this will called in activity
+    fun onSubmitOtpBtn(view: View) {
         authListner?.onStarted()
-        if (email.isNullOrEmpty() || otp.isNullOrEmpty()){
+        if (email.isNullOrEmpty() || otp.isNullOrEmpty()) {
             authListner?.onFailure("All fileds are required ")
             /*show message*/
             return
@@ -24,31 +30,41 @@ class AuthViewModel :ViewModel() {
         /*hit submit otp from here*/
 //            success
         Coroutines.main {
-            val response = UserRepository().submitOtp(email!!, otp!!)
-            authListner?.onSuccess(response ,"login")
+
+            try {
+                val loginresponse = userRepository.submitOtp(email!!, otp!!)
+                loginresponse?.let {
+                    authListner?.onLoginSuccess(it)
+                    userRepository.saveUser(loginresponse)//user details saved in database
+                    return@main
+
+                }
+                /*if it is null */
+                authListner?.onFailure(loginresponse.toString())
+            } catch (e: ApiException) {
+                authListner?.onFailure(e.message!!)
+            }
+//            val response = UserRepository().submitOtp(email!!, otp!!)
+//            authListner?.onLoginSuccess(response)
         }
 
     }
 
-    fun onSignUpbtn(view: View){
-        Intent(view.context,SignUpActivity::class.java).also{
+    fun onSignUpbtn(view: View) {
+        Intent(view.context, SignUpActivity::class.java).also {
             view.context.startActivity(it)
 
         }
     }
 
-
-
-
     /*sending otp for login*/
-    fun onSendOtp(view: View){
+    fun onSendOtp(view: View) {
 
-        if (email.isNullOrEmpty()){
+        if (email.isNullOrEmpty()) {
             view.snackbar("Enter User Id")
             return
         }
         authListner?.onStarted()
-
 
         // this is a bad practices we are creating a other class instanc in Viewmodel class
         // we should avoid it
@@ -56,22 +72,19 @@ class AuthViewModel :ViewModel() {
         /*calling it from coroutines*/
 
         Coroutines.main {
-            val response = UserRepository().sendOtp(email!!)
-            if (response!=null)
-                authListner?.onSuccess(response,"otp")
+            val response = userRepository.sendOtp(email!!)
+            authListner?.onSuccess(response, "otp")
 
-            }
         }
+    }
 
-    fun ToNotesscreen(view: View){
-        Intent(view.context,HomeActivity::class.java).also {
+    fun ToNotesscreen(view: View) {
+        Intent(view.context, HomeActivity::class.java).also {
             view.context.startActivity(it)
         }
     }
 
-
-
 //        val loginResponse = UserRepository().sendOtp(email!!)
 //        authListner?.onSuccess(loginResponse)
 
-    }
+}

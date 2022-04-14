@@ -7,7 +7,7 @@ import java.io.Serializable
 @Entity
 data class Notes (
     val title:String,
-    val description:String) :Serializable // to pass data class from one fragment to other it sould be declared as
+    val description:String) :Serializable // to pass data class from one fragment to other it should be declared as
 //serializable
 {
     @PrimaryKey(autoGenerate = true)

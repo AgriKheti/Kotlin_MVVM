@@ -13,7 +13,7 @@ abstract class NotesDatabase :RoomDatabase(){
     abstract fun getNoteDao() : NoteDao
 
     companion object{
-       @Volatile private var instance :NotesDatabase?=null
+       @Volatile private var instance : NotesDatabase?=null
         private val LOCK = Any()
 
         operator  fun invoke (context: Context)= instance ?: synchronized(LOCK){
@@ -29,5 +29,4 @@ abstract class NotesDatabase :RoomDatabase(){
             "notesDatabase"
         ).build()
     }
-
 }

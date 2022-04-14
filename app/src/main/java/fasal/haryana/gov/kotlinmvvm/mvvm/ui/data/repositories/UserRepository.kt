@@ -1,34 +1,41 @@
 package fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories
 
-import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonObject
-import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities.User
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities.AppDatabase
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.MyApis
-import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.ApiResponse
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.SafeApiRequest
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
-import retrofit2.Call
-import retrofit2.Response
 
-class UserRepository  {
+/* dependency injection
+* instead of creating instance of class we can inject it through constructor
+* */
+class UserRepository(private val apis: MyApis,
+             private val db:AppDatabase
+             ) :SafeApiRequest()
+{
 
 
+    /*here we are also creating instance of class in another class
+       * this is not good practice*/
     suspend fun sendOtp(userid: String): JsonObject {
-        /*here we are also creating instance of class in another class
-        * this is not good practice
-        * */
-        var json = JsonObject()
-
+        val json = JsonObject()
         json.addProperty("userid",userid)
-        return MyApis.invoke().sendOtp(json)
-
+        return apis.sendOtp(json)
     }
 
-    suspend fun submitOtp(userid: String,otp :String) :JsonObject{
-        return MyApis.invoke().hitSubmitOtpApi("password",userid,otp)
+    suspend fun submitOtp(userid: String,otp :String) :AuthResponse{
+        return apiRequest { apis.hitSubmitOtpApi("password",userid,otp) }
+//        return MyApis.invoke().hitSubmitOtpApi("password",userid,otp)
     }
 
+    /*we are  calling/using App database in our User Repository class to perform fun on database*/
 
 
+    suspend fun saveUser(user: AuthResponse)=db.getUserDao().upsert(user)
+
+
+
+//     fun getUser()=db.getUserDao().getUser()
 //    fun sendOtp(userid:String):LiveData<User>{
 //
 //        val loginResponse = MutableLiveData<User>()

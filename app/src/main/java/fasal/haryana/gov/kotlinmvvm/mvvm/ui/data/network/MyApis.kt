@@ -1,10 +1,8 @@
 package fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network
 
-import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonObject
-import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities.User
-import okhttp3.ResponseBody
-import retrofit2.Call
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
@@ -32,5 +30,5 @@ interface MyApis {
     @POST("Login")
     @FormUrlEncoded
     suspend fun hitSubmitOtpApi(@Field ("grant_type") password:String,@Field("username") userid:String,
-    @Field("password") otp:String):JsonObject
+    @Field("password") otp:String): Response<AuthResponse>
 }
