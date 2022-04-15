@@ -2,6 +2,7 @@ package fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network
 
 import com.google.gson.JsonObject
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
+import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,9 +19,14 @@ interface MyApis {
 //    suspend fun sendOtp(@Body userid: JsonObject) : ResponseBody<User>
 
     companion object{
-        operator fun invoke() : MyApis{
+        operator fun invoke(networkConnectionInterceptor: NetworkConnectionInterceptor) : MyApis{
+
+
+            val okHttpClient= OkHttpClient.Builder().addInterceptor(networkConnectionInterceptor)
+                .build()
             return Retrofit.Builder()
                 .baseUrl("http://117.240.196.238:8486/")
+                .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(MyApis::class.java)

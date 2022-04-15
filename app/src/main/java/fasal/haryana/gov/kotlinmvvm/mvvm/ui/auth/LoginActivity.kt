@@ -14,6 +14,7 @@ import fasal.haryana.gov.kotlinmvvm.databinding.ActivityLoginBinding
 import fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesUi.HomeActivity
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities.AppDatabase
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.MyApis
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.NetworkConnectionInterceptor
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories.UserRepository
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.main.MainActivity
@@ -27,7 +28,8 @@ class LoginActivity : AppCompatActivity(),AuthListner {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_login)
-        val api=MyApis()
+        val networkConnectionInterceptor=NetworkConnectionInterceptor(this)
+        val api=MyApis(networkConnectionInterceptor)
         val db=AppDatabase(this)
         val repository=UserRepository(api,db)
         val factory = AuthViewModelFactory(repository)
@@ -55,7 +57,7 @@ class LoginActivity : AppCompatActivity(),AuthListner {
     }
     override fun onSuccess(loginResponse: JsonObject,key:String) {
         progress_bar.hide()
-        if (loginResponse!= null && key.equals("otp")){
+        if (key.equals("otp")){
             message(loginResponse.toString())
 
             edit_text_password.visibility= View.VISIBLE
