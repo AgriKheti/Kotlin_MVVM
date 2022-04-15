@@ -2,4 +2,9 @@
     <string name="app_name">Kotlin MVVM</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_sample_registeration_form">New Sample Register</string>
+    <string name="view_sample_register_form">Search Sample No</string>
+    <string name="logout">Logout</string>
+    <string name="my_account">My Account</string>
+    <string name="ok">Ok</string>
 </resources>
