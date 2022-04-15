@@ -8,7 +8,8 @@ import com.google.gson.annotations.SerializedName
 
 /* for room db to avoid multiple entry for same user */
  const val CURRENT_USER_ID=0
-@Entity
+
+
 data class User (
     @SerializedName("status"  ) var status  : String? = null,
     @SerializedName("message" ) var message : String? = null,

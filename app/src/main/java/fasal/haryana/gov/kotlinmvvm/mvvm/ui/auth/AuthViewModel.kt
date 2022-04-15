@@ -30,14 +30,12 @@ class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
         /*hit submit otp from here*/
 //            success
         Coroutines.main {
-
             try {
                 val loginresponse = userRepository.submitOtp(email!!, otp!!)
-                loginresponse?.let {
+                loginresponse.let {
                     authListner?.onLoginSuccess(it)
-                    userRepository.saveUser(loginresponse)//user details saved in database
                     return@main
-
+            //                    userRepository.saveUser(loginresponse)//user details saved in database
                 }
                 /*if it is null */
                 authListner?.onFailure(loginresponse.toString())
@@ -65,12 +63,10 @@ class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
             return
         }
         authListner?.onStarted()
-
         // this is a bad practices we are creating a other class instanc in Viewmodel class
         // we should avoid it
         // it is tight coupling
         /*calling it from coroutines*/
-
         Coroutines.main {
             val response = userRepository.sendOtp(email!!)
             authListner?.onSuccess(response, "otp")

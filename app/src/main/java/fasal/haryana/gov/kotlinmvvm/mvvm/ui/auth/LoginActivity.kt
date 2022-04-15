@@ -22,9 +22,6 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(),AuthListner {
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_login)
@@ -33,56 +30,34 @@ class LoginActivity : AppCompatActivity(),AuthListner {
         val repository=UserRepository(api,db)
         val factory = AuthViewModelFactory(repository)
         //in order to pass the constructor param in AuthViewModel we will be using ViewModel factory
-
 //        now we have the view model from our factory
         val binding :ActivityLoginBinding = DataBindingUtil.setContentView(this,R.layout.activity_login)
         val viewmodel = ViewModelProvider(this,factory).get(AuthViewModel::class.java)
         binding.viewmodel=viewmodel
         viewmodel.authListner=this
-
-
-//        viewmodel.getLoggedInUser().observe(this, Observer {
-//
-//            if (!it.accessToken.isNullOrBlank()){
-//                Intent(this,HomeActivity::class.java).also {
-//                    startActivity(it)
-//                }
-//            }
-//        })
-
     }
-
     override fun onStarted() {
         progress_bar.show()
-
     }
     override fun onSuccess(loginResponse: JsonObject,key:String) {
         progress_bar.hide()
-
         if (loginResponse!= null && key.equals("otp")){
             message(loginResponse.toString())
 
             edit_text_password.visibility= View.VISIBLE
             button_sign_in.visibility=View.VISIBLE
         }else if (key.equals("login")){
-
             Intent(this,SignUpActivity::class.java).also {
                 startActivity(it)
             }
         }
-//        root_layout.snackbar("Login Success")
-//        progress_bar.hide()
     }
     override fun onFailure(message: String) {
         message(message)
         progress_bar.hide()
     }
-
     override fun onLoginSuccess(response: AuthResponse) {
         progress_bar.hide()
         root_layout.snackbar("${response.Name.toString()} is logged Successfully"  )
-            message("Login Successful done")
-
-
-    }
+            message("Login Successful done") }
 }

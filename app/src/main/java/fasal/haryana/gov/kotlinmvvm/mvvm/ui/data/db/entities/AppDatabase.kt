@@ -6,7 +6,7 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
 
 
 @Database(
-    entities = [User::class,AuthResponse::class],
+    entities = [AuthResponse::class],
     version = 1
 )
 

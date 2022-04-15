@@ -31,7 +31,7 @@ class UserRepository(private val apis: MyApis,
     /*we are  calling/using App database in our User Repository class to perform fun on database*/
 
 
-    suspend fun saveUser(user: AuthResponse)=db.getUserDao().upsert(user)
+//    suspend fun saveUser(user: AuthResponse)=db.getUserDao().upsert(user)
 
 
 
