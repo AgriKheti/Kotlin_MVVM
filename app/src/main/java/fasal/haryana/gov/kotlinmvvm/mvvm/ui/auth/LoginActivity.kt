@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.gson.JsonObject
@@ -15,6 +16,7 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities.AppDatabase
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.MyApis
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories.UserRepository
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.main.MainActivity
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.hide
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.show
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.message
@@ -35,6 +37,18 @@ class LoginActivity : AppCompatActivity(),AuthListner {
         val viewmodel = ViewModelProvider(this,factory).get(AuthViewModel::class.java)
         binding.viewmodel=viewmodel
         viewmodel.authListner=this
+
+
+        viewmodel.getLoggedInUser().observe(this, Observer {
+            it?.let {
+//                Inte
+                message("${it.Name.toString()} is Logged In Successfully")
+                Intent(this,MainActivity::class.java).also {
+                    startActivity(it)
+                }
+            }
+        })
+
     }
     override fun onStarted() {
         progress_bar.show()

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fasal.haryana.gov.kotlinmvvm">
 
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinMVVM"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".mvvm.ui.main.MainActivity"
+            android:exported="false" />
         <activity
             android:name=".mvvm.mynotesApp.notesUi.HomeActivity"
             android:exported="false" />
@@ -26,8 +32,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -19,7 +19,7 @@ class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
 
 
 //    to check the details of logged in user
-//    fun getLoggedInUser()=userRepository.getUser()  // now this will called in activity
+    fun getLoggedInUser()=userRepository.getUser()  // now this will called in activity
     fun onSubmitOtpBtn(view: View) {
         authListner?.onStarted()
         if (email.isNullOrEmpty() || otp.isNullOrEmpty()) {
@@ -34,11 +34,14 @@ class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
                 val loginresponse = userRepository.submitOtp(email!!, otp!!)
                 loginresponse.let {
                     authListner?.onLoginSuccess(it)
+
+                    userRepository.saveUser(loginresponse)//user details saved in database
                     return@main
-            //                    userRepository.saveUser(loginresponse)//user details saved in database
                 }
-                /*if it is null */
+
                 authListner?.onFailure(loginresponse.toString())
+                /*if it is null */
+
             } catch (e: ApiException) {
                 authListner?.onFailure(e.message!!)
             }

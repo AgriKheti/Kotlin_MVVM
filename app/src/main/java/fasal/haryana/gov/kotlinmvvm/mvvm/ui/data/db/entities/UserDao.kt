@@ -1,8 +1,10 @@
 package fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
 
 
@@ -15,8 +17,8 @@ interface UserDao{
    suspend fun upsert(user:AuthResponse):Long
 
 
-//   @Query("SELECT * FROM user")
-//    fun getUser() :LiveData<User>
+   @Query("SELECT * FROM authresponse")
+    fun getUser() : LiveData<AuthResponse>
 
 
 

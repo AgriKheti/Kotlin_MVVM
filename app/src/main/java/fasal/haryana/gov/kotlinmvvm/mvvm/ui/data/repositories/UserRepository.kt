@@ -31,11 +31,11 @@ class UserRepository(private val apis: MyApis,
     /*we are  calling/using App database in our User Repository class to perform fun on database*/
 
 
-//    suspend fun saveUser(user: AuthResponse)=db.getUserDao().upsert(user)
+    suspend fun saveUser(user: AuthResponse)=db.getUserDao().upsert(user)
 
 
 
-//     fun getUser()=db.getUserDao().getUser()
+     fun getUser()=db.getUserDao().getUser()
 //    fun sendOtp(userid:String):LiveData<User>{
 //
 //        val loginResponse = MutableLiveData<User>()
