@@ -16,9 +16,12 @@
         <entry key="..\:/kotlinApps/Kotlin_MVVM/app/src/main/res/drawable/ic_baseline_person_add_24.xml" value="0.147" />
         <entry key="..\:/kotlinApps/Kotlin_MVVM/app/src/main/res/layout/activity_login.xml" value="0.11231884057971014" />
         <entry key="..\:/kotlinApps/Kotlin_MVVM/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/kotlinApps/Kotlin_MVVM/app/src/main/res/layout/activity_my_home.xml" value="0.20416666666666666" />
         <entry key="..\:/kotlinApps/Kotlin_MVVM/app/src/main/res/layout/include_myaccount_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/kotlinApps/Kotlin_MVVM/app/src/main/res/layout/profile_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/kotlinApps/Kotlin_MVVM/app/src/main/res/menu/account_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/kotlinApps/Kotlin_MVVM/app/src/main/res/menu/mymenu.xml" value="0.20416666666666666" />
+        <entry key="..\:/kotlinApps/Kotlin_MVVM/app/src/main/res/menu/nav_menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

@@ -17,6 +17,7 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.MyApis
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.NetworkConnectionInterceptor
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories.UserRepository
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.home.MyHomeActivity
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.main.MainActivity
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.hide
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.show
@@ -45,7 +46,7 @@ class LoginActivity : AppCompatActivity(),AuthListner {
             it?.let {
 //                Inte
                 message("${it.Name.toString()} is Logged In Successfully")
-                Intent(this,MainActivity::class.java).also {
+                Intent(this,MyHomeActivity::class.java).also {
                     startActivity(it)
                 }
             }
