@@ -8,7 +8,7 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories.UserRepository
 class ProfileViewModelFactory (private val repository: UserRepository):ViewModelProvider.NewInstanceFactory(){
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return ProfileViewModelFactory(repository) as T
+        return ProfileViewModel(repository) as T
 //        that will give us the Authviewmodel with required constructor
     }
 

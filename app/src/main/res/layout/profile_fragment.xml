@@ -41,7 +41,7 @@
                 tools:text="Name"
                 android:textStyle="bold"
                 android:padding="@dimen/dp_10"
-                android:text=""
+                android:text="@{viewmodel.user.name}"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
                 android:textStyle="bold"
                 tools:text="Mobile number"
                 android:padding="@dimen/dp_10"
-                android:text=""
+                android:text="@{viewmodel.user.mobileNumber}"
                 />
 
 
