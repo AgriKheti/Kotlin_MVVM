@@ -18,6 +18,9 @@ import kotlinx.android.synthetic.main.activity_login.view.*
 /*we will be using dependency injection as passing classes in constructor to avoid tight coupled*/
 class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
 
+    var name:String?=null
+    var password:String?=null
+    var confipassword:String?=null
     var email: String? = null
     var otp: String? = null
     var authListner: AuthListner? = null
@@ -58,6 +61,8 @@ class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
 
     }
 
+
+
     fun onSignUpbtn(view: View) {
         Intent(view.context, SignUpActivity::class.java).also {
             view.context.startActivity(it)
@@ -84,6 +89,28 @@ class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
                     authListner?.onFailure(e.message!!)
                 }
             }
+
+    }
+
+    fun doSignup(view: View){
+        if (name.isNullOrEmpty()){
+            authListner?.onFailure("Enter Name")
+            return
+        }
+        else if (email.isNullOrEmpty()){
+            authListner?.onFailure("Enter Email")
+            return
+        }else if (password.isNullOrEmpty()){
+            authListner?.onFailure("Enter Password")
+            return
+        }
+        else if (password!=confipassword){
+            authListner?.onFailure("Password Mismatch")
+            return
+        }else{
+            authListner?.onFailure("Signup Success")
+            return
+        }
 
     }
 

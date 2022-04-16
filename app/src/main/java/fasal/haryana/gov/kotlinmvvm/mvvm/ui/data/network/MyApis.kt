@@ -37,4 +37,9 @@ interface MyApis {
     @FormUrlEncoded
     suspend fun hitSubmitOtpApi(@Field ("grant_type") password:String,@Field("username") userid:String,
     @Field("password") otp:String): Response<AuthResponse>
+
+    @FormUrlEncoded
+    @POST("signup")
+    suspend fun signup(@Field("name")name:String,@Field("email")email:String
+    ,@Field("password")password:String):Response<AuthResponse>
 }

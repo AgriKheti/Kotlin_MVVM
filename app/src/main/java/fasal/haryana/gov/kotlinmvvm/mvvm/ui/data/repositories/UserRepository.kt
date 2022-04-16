@@ -5,6 +5,7 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities.AppDatabase
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.MyApis
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.SafeApiRequest
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
+import retrofit2.Response
 
 /* dependency injection
 * instead of creating instance of class we can inject it through constructor
@@ -36,6 +37,11 @@ class UserRepository(private val apis: MyApis,
 
 
      fun getUser()=db.getUserDao().getUser()
+
+
+    suspend fun userSignup(name:String,email:String,password:String):AuthResponse {
+        return apiRequest { apis.signup(name,email,password) }
+    }
 //    fun sendOtp(userid:String):LiveData<User>{
 //
 //        val loginResponse = MutableLiveData<User>()
