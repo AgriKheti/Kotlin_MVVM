@@ -77,13 +77,15 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.2"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:1.2.0'
     kapt "androidx.room:room-compiler:2.4.2"
 
     //Android Navigation Architecture
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.0-alpha04"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.0-alpha04"
 
+
+    implementation "androidx.preference:preference-ktx:1.2.0"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

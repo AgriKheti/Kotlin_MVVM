@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Profile"
-        android:id="@+id/nav_profile"/>
+        android:id="@+id/profileFragment"/>
 
     <item android:title="Dashboad"
         android:id="@+id/nav_dashboard"/>

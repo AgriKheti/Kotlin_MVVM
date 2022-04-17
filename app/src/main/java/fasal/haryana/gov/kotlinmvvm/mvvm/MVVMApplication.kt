@@ -1,6 +1,7 @@
 package fasal.haryana.gov.kotlinmvvm.mvvm
 
 import android.app.Application
+import fasal.haryana.gov.kotlinmvvm.mvvm.preferences.Preferences
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.auth.AuthViewModelFactory
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities.AppDatabase
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.MyApis
@@ -23,6 +24,7 @@ class MVVMApplication :Application(),KodeinAware {
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind()from singleton { MyApis(instance()) }
         bind()from singleton { AppDatabase(instance()) }
+        bind() from singleton { Preferences(instance()) }
         bind() from singleton{ UserRepository(instance(),instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
         bind() from provider { ProfileViewModelFactory(instance()) }
