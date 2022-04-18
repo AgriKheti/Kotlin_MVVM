@@ -676,18 +676,16 @@
                         android:layout_weight="2">
 
 
-
                         <TextView
+                            android:id="@+id/latitude_et"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="- - -"
-                            android:layout_marginEnd="@dimen/dp_10"
-                            android:padding="@dimen/dp_10"
-                            android:textStyle="bold"
-                            android:gravity="center"
-                            android:id="@+id/latitude_et"
                             android:layout_gravity="center_vertical"
-                            />
+                            android:layout_marginEnd="@dimen/dp_10"
+                            android:gravity="center"
+                            android:hint="- - -"
+                            android:padding="@dimen/dp_10"
+                            android:textStyle="bold" />
 
 
 

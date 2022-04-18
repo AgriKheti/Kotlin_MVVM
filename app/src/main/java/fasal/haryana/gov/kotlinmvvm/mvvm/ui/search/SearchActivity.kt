@@ -60,8 +60,8 @@ class SearchActivity : AppCompatActivity(),KodeinAware {
                                 murabba_tv.setText(it.landDetail?.Muraba)
                                 khasra_tv.setText(it.landDetail?.Khatoni)
                                 khewat_tv.setText(it.landDetail?.Khewat)
-
-
+                                latitude_et.setText(it.landDetail?.latitude)
+                                longitude_et.setText(it.landDetail?.longitude)
                                 message(response.message!!)
                             }
                             binding.progessBar.visibility= View.GONE
