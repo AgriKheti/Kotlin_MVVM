@@ -14,6 +14,8 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.hide
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.message
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.snackbar
 import kotlinx.android.synthetic.main.activity_login.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 //this is called constructor injection , atleast once we need to create the instance that we will do in LoginActivity
 /*we will be using dependency injection as passing classes in constructor to avoid tight coupled*/
@@ -25,11 +27,11 @@ class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
      fun getLoggedInUser()=userRepository.getUser()  // now this will called in activity
 
 
-    suspend fun onSendOtp(userid:String)= userRepository.sendOtp(userid)
+    suspend fun onSendOtp(userid:String)= withContext(Dispatchers.IO){userRepository.sendOtp(userid)}
 
-    suspend fun onSubmitotp(userid:String,otp:String) =userRepository.submitOtp(userid,otp)
+    suspend fun onSubmitotp(userid:String,otp:String) =withContext(Dispatchers.IO){userRepository.submitOtp(userid,otp)}
 
-    suspend fun saveLoggedinUser(authResponse: AuthResponse)=userRepository.saveUser(authResponse)
+    suspend fun saveLoggedinUser(authResponse: AuthResponse)=withContext(Dispatchers.IO){userRepository.saveUser(authResponse)}
 
 
 
