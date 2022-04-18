@@ -22,7 +22,7 @@ class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
 
 
 //    to check the details of logged in user
-    fun getLoggedInUser()=userRepository.getUser()  // now this will called in activity
+     fun getLoggedInUser()=userRepository.getUser()  // now this will called in activity
 
 
     suspend fun onSendOtp(userid:String)= userRepository.sendOtp(userid)
@@ -30,8 +30,6 @@ class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
     suspend fun onSubmitotp(userid:String,otp:String) =userRepository.submitOtp(userid,otp)
 
     suspend fun saveLoggedinUser(authResponse: AuthResponse)=userRepository.saveUser(authResponse)
-
-
 
 
 

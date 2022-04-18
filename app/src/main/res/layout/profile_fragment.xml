@@ -4,13 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools" >
 
 
-    <data>
-        <variable
-            name="viewmodel"
-            type="fasal.haryana.gov.kotlinmvvm.mvvm.ui.home.profile.ProfileViewModel"
-            />
-
-    </data>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,18 +32,19 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 tools:text="Name"
+                android:id="@+id/edit_text_name"
                 android:textStyle="bold"
                 android:padding="@dimen/dp_10"
-                android:text="@{viewmodel.user.name}"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
+                android:id="@+id/edit_text_mobile"
                 android:textStyle="bold"
                 tools:text="Mobile number"
                 android:padding="@dimen/dp_10"
-                android:text="@{viewmodel.user.mobileNumber}"
+
                 />
 
 

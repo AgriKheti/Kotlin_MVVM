@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.gson.JsonObject
@@ -42,15 +43,15 @@ class LoginActivity : AppCompatActivity(),KodeinAware {
          viewmodel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
 
 
-//        viewmodel.getLoggedInUser().observe(this, Observer {
-//            it?.let {
-////                Inte
-//                message("${it.Name.toString()} is Logged In Successfully")
-//                Intent(this, MyHomeActivity::class.java).also {
-//                    startActivity(it)
-//                }
-//            }
-//        })
+        viewmodel.getLoggedInUser().observe(this, Observer {
+            it?.let {
+//                Inte
+                message("${it.Name.toString()} is Logged In Successfully")
+                Intent(this, MyHomeActivity::class.java).also {
+                    startActivity(it)
+                }
+            }
+        })
 
 
         binding.buttonSendOtp.setOnClickListener {

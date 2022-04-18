@@ -11,8 +11,11 @@ class MyHomeActivity : AppCompatActivity() {
 
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         setContentView(R.layout.activity_my_home)
 
         setSupportActionBar(toolbar_home)
@@ -22,8 +25,14 @@ class MyHomeActivity : AppCompatActivity() {
         /*it is for , so that the action bar titile change automatically*/
         NavigationUI.setupActionBarWithNavController(this,navcontroller
         ,drawer_layout)
-    }
 
+
+
+
+
+
+
+    }
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(
             Navigation.findNavController(this,R.id.fragment_nav_home)
