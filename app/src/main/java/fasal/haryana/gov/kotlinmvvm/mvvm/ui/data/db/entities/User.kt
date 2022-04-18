@@ -1,6 +1,5 @@
 package fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities
 
-import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
