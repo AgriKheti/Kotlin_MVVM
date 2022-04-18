@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesUi.HomeActivity
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories.UserRepository
 import fasal.haryana.gov.kotlinmvvm.mvvm.utils.ApiException
 import fasal.haryana.gov.kotlinmvvm.mvvm.utils.Coroutines
@@ -26,7 +27,9 @@ class AuthViewModel(private  val userRepository: UserRepository) : ViewModel() {
 
     suspend fun onSendOtp(userid:String)= userRepository.sendOtp(userid)
 
-//    suspend fun saveLoggedinUser(auth)
+    suspend fun onSubmitotp(userid:String,otp:String) =userRepository.submitOtp(userid,otp)
+
+    suspend fun saveLoggedinUser(authResponse: AuthResponse)=userRepository.saveUser(authResponse)
 
 
 

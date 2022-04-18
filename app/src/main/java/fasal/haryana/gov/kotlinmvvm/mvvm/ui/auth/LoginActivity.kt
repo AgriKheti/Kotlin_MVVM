@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.gson.JsonObject
 import fasal.haryana.gov.kotlinmvvm.R
 import fasal.haryana.gov.kotlinmvvm.databinding.ActivityLoginBinding
+import fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesUi.HomeActivity
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.home.MyHomeActivity
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.hide
@@ -56,10 +57,37 @@ class LoginActivity : AppCompatActivity(),KodeinAware {
             sendotp()
         }
 
+        button_sign_in.setOnClickListener {
+
+            signincall()
+
+    }
+
+
+
+
+
         text_view_sign_up.setOnClickListener {
-           val intent = Intent(this,SignUpActivity::class.java)
+            val intent = Intent(this,SignUpActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun signincall() {
+            val userid = binding.editTextUserid.text.toString().trim()
+            val otp = binding.editTextOtp.text.toString().trim()
+
+            if (otp.isEmpty()){
+                message("Enter Otp")
+            }else {
+                lifecycleScope.launch {
+                    val authResponse=viewmodel.onSubmitotp(userid,otp)
+                    message("${authResponse.Name} is Logged in Successfully")
+                    viewmodel.saveLoggedinUser(authResponse)
+                }
+                val intent = Intent(this,HomeActivity::class.java)
+                startActivity(intent)
+            }
 
     }
 
