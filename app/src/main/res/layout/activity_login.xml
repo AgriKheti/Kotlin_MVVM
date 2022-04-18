@@ -4,14 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-        <variable
-            name="viewmodel"
-            type="fasal.haryana.gov.kotlinmvvm.mvvm.ui.auth.AuthViewModel"
-            />
-
-    </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/root_layout"
         android:layout_width="match_parent"
@@ -74,7 +66,7 @@
                 android:padding="18dp">
 
                 <EditText
-                    android:id="@+id/edit_text_email"
+                    android:id="@+id/edit_text_userid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="12dp"
@@ -84,10 +76,10 @@
                     android:hint="User Id"
                     android:inputType="textEmailAddress"
                     android:padding="12dp"
-                    android:text="@={viewmodel.email}" />
+                    />
 
                 <EditText
-                    android:id="@+id/edit_text_password"
+                    android:id="@+id/edit_text_otp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="12dp"
@@ -97,7 +89,6 @@
                     android:hint="O T P "
                     android:inputType="phone"
                     android:padding="12dp"
-                    android:text="@={viewmodel.otp}"
                     android:visibility="gone" />
 
                 <TextView
@@ -105,7 +96,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:onClick="@{viewmodel::ToNotesscreen}"
                     android:text="Forget Password?"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/skyblue_700" />
@@ -116,7 +106,6 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:onClick="@{viewmodel::onSendOtp}"
                     android:text="Send Otp"
                     android:textAllCaps="false" />
 
@@ -125,7 +114,6 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:onClick="@{viewmodel::onSubmitOtpBtn}"
                     android:text="Sign In"
                     android:textAllCaps="false"
                     android:visibility="gone" />
@@ -139,7 +127,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/linearLayout2"
                 android:layout_centerHorizontal="true"
-                android:onClick="@{viewmodel::onSignUpbtn}"
                 android:layout_marginTop="12dp"
                 android:text="Don't have an account?\nSign Up Here"
                 android:textAlignment="center"

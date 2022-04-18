@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.gson.JsonObject
 import fasal.haryana.gov.kotlinmvvm.R
 import fasal.haryana.gov.kotlinmvvm.databinding.ActivityLoginBinding
@@ -17,16 +17,19 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.message
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.show
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.snackbar
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 
-class LoginActivity : AppCompatActivity(),AuthListner,KodeinAware {
+class LoginActivity : AppCompatActivity(),KodeinAware {
 
     override val kodein by kodein()
 
     val factory: AuthViewModelFactory by instance()
+    private lateinit var binding: ActivityLoginBinding
+    private lateinit var viewmodel :AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,51 +37,61 @@ class LoginActivity : AppCompatActivity(),AuthListner,KodeinAware {
 
         //in order to pass the constructor param in AuthViewModel we will be using ViewModel factory
 //        now we have the view model from our factory
-        val binding: ActivityLoginBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_login)
-        val viewmodel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
-        binding.viewmodel = viewmodel
-        viewmodel.authListner = this
+        binding  =DataBindingUtil.setContentView(this, R.layout.activity_login)
+         viewmodel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
 
 
-        viewmodel.getLoggedInUser().observe(this, Observer {
-            it?.let {
-//                Inte
-                message("${it.Name.toString()} is Logged In Successfully")
-                Intent(this, MyHomeActivity::class.java).also {
-                    startActivity(it)
-                }
-            }
-        })
+//        viewmodel.getLoggedInUser().observe(this, Observer {
+//            it?.let {
+////                Inte
+//                message("${it.Name.toString()} is Logged In Successfully")
+//                Intent(this, MyHomeActivity::class.java).also {
+//                    startActivity(it)
+//                }
+//            }
+//        })
 
-    }
 
-    override fun onStarted() {
-        progress_bar.show()
-    }
+        binding.buttonSendOtp.setOnClickListener {
 
-    override fun onSuccess(loginResponse: JsonObject, key: String) {
-        progress_bar.hide()
-        if (key.equals("otp")) {
-            message(loginResponse.toString())
+            sendotp()
 
-            edit_text_password.visibility = View.VISIBLE
-            button_sign_in.visibility = View.VISIBLE
-        } else if (key.equals("login")) {
-            Intent(this, SignUpActivity::class.java).also {
-                startActivity(it)
-            }
         }
+
     }
 
-    override fun onFailure(message: String) {
-        message(message)
-        progress_bar.hide()
-    }
+    private fun sendotp() {
 
-    override fun onLoginSuccess(response: AuthResponse) {
-        progress_bar.hide()
-        root_layout.snackbar("${response.Name.toString()} is logged Successfully")
+        val userid = binding.editTextUserid.text.toString().trim()
+
+        if (userid.isNullOrEmpty()) {
+            message("Enter User ID")
+        } else lifecycleScope.launch {
+            val response = viewmodel.onSendOtp(userid)
+            message(response.toString())
+            edit_text_otp.visibility = View.VISIBLE
+            button_sign_in.visibility = View.VISIBLE
+
+        }
+
+//    override fun onStarted() {
+//        progress_bar.show()
+//    }
+
+//    override fun onSuccess(loginResponse: JsonObject, key: String) {
+//        progress_bar.hide()
+//        if (key.equals("otp")) {
+//            message(loginResponse.toString())
+//
+//            edit_text_otp.visibility = View.VISIBLE
+//            button_sign_in.visibility = View.VISIBLE
+//        } else if (key.equals("login")) {
+//            Intent(this, SignUpActivity::class.java).also {
+//                startActivity(it)
+//            }
+//        }
+//    }
+
 
     }
 }
