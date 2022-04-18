@@ -75,7 +75,7 @@
                     android:layout_height="match_parent"/>
 
                 <EditText
-                    android:id="@+id/edit_text_userid"
+                    android:id="@+id/edit_text_email"
                     android:hint="belal@gmail.com"
                     android:inputType="textEmailAddress"
                     android:drawablePadding="16dp"
@@ -87,7 +87,7 @@
                     android:layout_height="match_parent"/>
 
                 <EditText
-                    android:id="@+id/edit_text_otp"
+                    android:id="@+id/edit_text_password"
                     android:inputType="textPassword"
                     android:hint="password"
                     android:drawablePadding="16dp"

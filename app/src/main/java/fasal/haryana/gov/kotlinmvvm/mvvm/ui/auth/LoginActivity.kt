@@ -53,9 +53,12 @@ class LoginActivity : AppCompatActivity(),KodeinAware {
 
 
         binding.buttonSendOtp.setOnClickListener {
-
             sendotp()
+        }
 
+        text_view_sign_up.setOnClickListener {
+           val intent = Intent(this,SignUpActivity::class.java)
+            startActivity(intent)
         }
 
     }
