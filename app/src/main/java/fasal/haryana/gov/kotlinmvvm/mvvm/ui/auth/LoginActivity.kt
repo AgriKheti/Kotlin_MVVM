@@ -14,6 +14,7 @@ import fasal.haryana.gov.kotlinmvvm.databinding.ActivityLoginBinding
 import fasal.haryana.gov.kotlinmvvm.mvvm.mynotesApp.notesUi.HomeActivity
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.home.MyHomeActivity
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.main.MainActivity
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.hide
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.message
 import fasal.haryana.gov.kotlinmvvm.mvvm.viewutil.show
@@ -47,7 +48,7 @@ class LoginActivity : AppCompatActivity(),KodeinAware {
             it?.let {
 //                Inte
                 message("${it.Name.toString()} is Logged In Successfully")
-                Intent(this, MyHomeActivity::class.java).also {
+                Intent(this, MainActivity::class.java).also {
                     startActivity(it)
                 }
             }
@@ -63,10 +64,6 @@ class LoginActivity : AppCompatActivity(),KodeinAware {
             signincall()
 
     }
-
-
-
-
 
         text_view_sign_up.setOnClickListener {
             val intent = Intent(this,SignUpActivity::class.java)

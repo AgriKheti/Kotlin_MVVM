@@ -11,7 +11,6 @@ abstract class SafeApiRequest {
     /*this is known as Generic funtions*/
     suspend fun <T :Any> apiRequest(call:suspend ()-> Response<T>): T {
         val response =call.invoke()
-
         if (response.isSuccessful){
             return response.body()!!
         }else {
@@ -23,13 +22,12 @@ abstract class SafeApiRequest {
             * */
             error?.let {
                 try {
-                    message.append(JSONObject(it).getString("error_description"))
+//                    message.append(JSONObject(it).getString("error_description"))
 
                 } catch (e: JSONException) {
                     message.append("\n")
                 }
                 message.append("Error code: ${response.code()}")
-
             }
             throw ApiException(message.toString())
 

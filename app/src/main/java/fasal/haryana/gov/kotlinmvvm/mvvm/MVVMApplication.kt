@@ -8,6 +8,8 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.MyApis
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.NetworkConnectionInterceptor
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.repositories.UserRepository
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.home.profile.ProfileViewModelFactory
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.search.SearchViewModel
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.search.SearchViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -27,6 +29,7 @@ class MVVMApplication :Application(),KodeinAware {
         bind() from singleton { Preferences(instance()) }
         bind() from singleton{ UserRepository(instance(),instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
+        bind() from provider { SearchViewModelFactory(instance()) }
         bind() from provider { ProfileViewModelFactory(instance()) }
 
     }

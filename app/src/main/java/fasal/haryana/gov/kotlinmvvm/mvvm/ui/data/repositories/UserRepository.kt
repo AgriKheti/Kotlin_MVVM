@@ -5,6 +5,7 @@ import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.db.entities.AppDatabase
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.MyApis
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.SafeApiRequest
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.SearchResponse
 import retrofit2.Response
 
 /* dependency injection
@@ -24,15 +25,16 @@ class UserRepository(private val apis: MyApis,
         return apis.sendOtp(json)
     }
 
+
+
     suspend fun submitOtp(userid: String,otp :String) :AuthResponse{
         return apiRequest { apis.hitSubmitOtpApi("password",userid,otp) }
 //        return MyApis.invoke().hitSubmitOtpApi("password",userid,otp)
     }
 
     /*we are  calling/using App database in our User Repository class to perform fun on database*/
-
-
     suspend fun saveUser(user: AuthResponse)=db.getUserDao().upsert(user)
+
 
 
 
@@ -41,6 +43,11 @@ class UserRepository(private val apis: MyApis,
 
     suspend fun userSignup(name:String,email:String,password:String):AuthResponse {
         return apiRequest { apis.signup(name,email,password) }
+
+    }
+
+    suspend fun searchSample(samppleno:String,token:String):SearchResponse{
+        return apiRequest { apis.searchSample(samppleno,token) }
     }
 //    fun sendOtp(userid:String):LiveData<User>{
 //

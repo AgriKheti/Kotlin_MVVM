@@ -7,4 +7,15 @@
     <string name="logout">Logout</string>
     <string name="my_account">My Account</string>
     <string name="ok">Ok</string>
+    <string name="land_details">Land Details</string>
+    <string name="khasra_no">Khasra No</string>
+    <string name="village">Village</string>
+    <string name="block_mandal">Block</string>
+    <string name="tehsil">Tehsil</string>
+    <string name="district">District</string>
+    <string name="sample_no">Sample No</string>
+    <string name="cycle">Cycle</string>
+    <string name="soil_type">Soil Type</string>
+    <string name="irrigated">Irrigated</string>
+    <string name="irrigation_source">Irrigation Source</string>
 </resources>

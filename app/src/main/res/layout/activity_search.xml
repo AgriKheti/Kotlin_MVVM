@@ -1,9 +1,860 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".mvvm.ui.main.SearchActivity">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".mvvm.ui.search.SearchActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:padding="@dimen/dp_10"
+                >
+
+
+                <EditText
+                    android:id="@+id/search_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_toStartOf="@+id/search_btn_1"
+                    android:background="@drawable/search_background"
+                    android:gravity="center_vertical"
+                    android:hint="Search Sample"
+                    android:padding="@dimen/dp_8" />
+
+                <ImageView
+                    android:id="@+id/search_btn_1"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/search_background"
+                    android:padding="@dimen/dp_8"
+                    android:src="@drawable/ic_baseline_search" />
+
+            </RelativeLayout>
+
+            <!--for Land details-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:layout_height="wrap_content"
+                android:id="@+id/land_layout_search"
+                android:visibility="visible"
+                android:padding="@dimen/dp_10"
+                android:background="@drawable/search_background"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:orientation="vertical">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:text="@string/land_details"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+                <!--farmer serial number-->
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="Farmer Sr.No."/>
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:hint="---"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:background="@drawable/search_background"/>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--sample no-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/cycle"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="2022-23"
+                        android:id="@+id/cycle_tv"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--sample no-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/sample_no"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:hint="@string/sample_no"
+                        android:id="@+id/sample_no_tv"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--Land District -->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/district"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:hint="@string/district"
+                        android:id="@+id/distname_tv"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--land tehsil-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/tehsil"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:id="@+id/teh_tv"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <!--block -->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/block_mandal"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:id="@+id/block_tv"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+                <!--land village-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/village"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:id="@+id/village_tv"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--murabba no-->
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="Murabba No."/>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_toStartOf="@+id/search_murbba_iv"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/murabba_tv"
+                            android:padding="@dimen/dp_10"
+                            />
+
+
+                        <ImageButton
+                            android:id="@+id/search_murbba_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:padding="@dimen/dp_8"
+                            android:visibility="gone"
+                            android:src="@drawable/ic_baseline_search" />
+
+                    </RelativeLayout>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <!--khasra no-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/khasra_no"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:id="@+id/khasra_tv"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:id="@+id/progess_bar"
+                    android:layout_gravity="center"
+                    />
+
+                <!--Khewat-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:visibility="visible"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/dp_10"
+                        android:text="Khewat No."/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:hint="khewat"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:id="@+id/khewat_tv"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--Khatoni-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="Khatoni No."/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:id="@+id/khatoni_tv"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--area size-->
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textStyle="bold"
+                        android:gravity="center"
+
+                        android:padding="@dimen/dp_10"
+                        android:layout_height="wrap_content"
+                        android:text="Area"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:layout_marginTop="2dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:id="@+id/kanal_tv"
+                            android:gravity="center"
+                            android:padding="@dimen/dp_8"
+                            android:textStyle="bold"
+                            android:background="@drawable/search_background"
+                            android:hint="Kanal"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/dp_8"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:hint="K"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="@dimen/dp_8"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:id="@+id/marla_tv"
+                            android:background="@drawable/search_background"
+                            android:hint="Marla"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_8"
+                            android:layout_weight="1"
+                            android:hint="M"/>
+
+
+
+                    </LinearLayout>
+
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--Revenue land details-->
+
+
+
+
+
+                <!--soil type-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/soil_type"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:id="@+id/soiltype_tv"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--Irrigated-->
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="@string/irrigated"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:id="@+id/irriagated_tv"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--Irrigation Source-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:id="@+id/linear_sourceType"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="@dimen/dp_10"
+                        android:gravity="center"
+
+                        android:text="@string/irrigation_source"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:id="@+id/irriSource_tv"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--Latitude-->
+
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="*Latitude"/>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2">
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="- - -"
+                            android:layout_marginEnd="@dimen/dp_10"
+                            android:padding="@dimen/dp_10"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:id="@+id/latitude_et"
+                            android:layout_gravity="center_vertical"
+                            />
+
+
+
+                    </RelativeLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+
+
+
+
+                <!--Longitude-->
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="*Longitude"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:hint="- - -"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:id="@+id/longitude_et"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!--created on-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="Created on"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:hint="- - -"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:id="@+id/created_on_tv"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+                <!--Farm Size-->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:visibility="gone"
+                    android:background="@drawable/search_background"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_10"
+                        android:text="*Farm Size"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="- -"
+                            android:id="@+id/farmsize_et"
+                            android:layout_gravity="center_vertical"
+                            android:padding="@dimen/dp_10"
+                            android:background="@drawable/search_background"/>
+
+                        <Spinner
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_gravity="center_vertical"
+                            android:padding="@dimen/dp_10"
+                            android:id="@+id/farmsize_spinner"
+                            android:layout_height="wrap_content"/>
+
+
+                    </LinearLayout>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <ImageView
+                    android:id="@+id/khet_iv"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="@dimen/dp_100"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+
+                <!--farmer details here-->
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</layout>
+

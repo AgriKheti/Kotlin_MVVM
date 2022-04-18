@@ -7,8 +7,8 @@ import android.view.*
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import fasal.haryana.gov.kotlinmvvm.R
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.include_myaccount_layout.*
 
 class MainActivity : AppCompatActivity() {
 

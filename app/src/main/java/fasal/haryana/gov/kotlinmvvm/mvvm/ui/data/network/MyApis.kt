@@ -2,14 +2,12 @@ package fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network
 
 import com.google.gson.JsonObject
 import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.AuthResponse
+import fasal.haryana.gov.kotlinmvvm.mvvm.ui.data.network.responses.SearchResponse
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface MyApis {
 
@@ -42,4 +40,8 @@ interface MyApis {
     @POST("signup")
     suspend fun signup(@Field("name")name:String,@Field("email")email:String
     ,@Field("password")password:String):Response<AuthResponse>
+
+
+    @GET("api/List?")
+    suspend fun searchSample(@Query("sampleno")sample:String,@Header("Authorization") token:String):Response<SearchResponse>
 }
