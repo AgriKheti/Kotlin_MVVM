@@ -34,34 +34,37 @@ class SignUpActivity : AppCompatActivity(),KodeinAware {
         viewModel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
 
 
-
         button_sign_up.setOnClickListener {
-            val name = edit_text_name.text.toString().trim()
-            val email = edit_text_email.text.toString().trim()
-            val password = edit_text_password.text.toString().trim()
-            val confpassword = edit_text_password_confirm.text.toString().trim()
-
-            if (name.isEmpty()){
-                message("Enter Name")
-
-            }else if (email.isEmpty()){
-                message("Enter Email")
-            }else if (password.isEmpty()){
-                message("Enter Password")
-            }else if (confpassword.isEmpty()){
-                message("Enter Confirm password")
-            }else if (password!=confpassword){
-                message("Password Mismatch")
-            }
-            else {
-                val intent = Intent(this,MainActivity::class.java)
-                startActivity(intent)
-                message("Sign up success")
-            }
+             signupcall()
         }
+        text_view_login.setOnClickListener {  val intent = Intent(this,LoginActivity::class.java)
+            startActivity(intent) }
 
+    }
 
+    private fun signupcall() {
+        val name = edit_text_name.text.toString().trim()
+        val email = edit_text_email.text.toString().trim()
+        val password = edit_text_password.text.toString().trim()
+        val confpassword = edit_text_password_confirm.text.toString().trim()
 
+        if (name.isEmpty()){
+            message("Enter Name")
+
+        }else if (email.isEmpty()){
+            message("Enter Email")
+        }else if (password.isEmpty()){
+            message("Enter Password")
+        }else if (confpassword.isEmpty()){
+            message("Enter Confirm password")
+        }else if (password!=confpassword){
+            message("Password Mismatch")
+        }
+        else {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+            message("Sign up success")
+        }
     }
 
 }
