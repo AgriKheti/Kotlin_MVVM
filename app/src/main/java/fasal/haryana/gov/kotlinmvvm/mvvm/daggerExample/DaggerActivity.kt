@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import fasal.haryana.gov.kotlinmvvm.R
 import fasal.haryana.gov.kotlinmvvm.mvvm.daggerExample.dagger.DaggerCarComponent
+import fasal.haryana.gov.kotlinmvvm.mvvm.daggerExample.dagger.PetrolEngineModule
 import javax.inject.Inject
 
 class DaggerActivity : AppCompatActivity() {
@@ -14,7 +15,6 @@ class DaggerActivity : AppCompatActivity() {
     @Inject
      lateinit var car: Car
 
-
 //     @Inject  it will auto create and call funtions of Dagger  as we have created the object like "println() fun "
 //     lateinit var car1:Car
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +22,17 @@ class DaggerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dagger)
 
 
+//        @C implementation for passing Int value while injecting
+           val carComponent= DaggerCarComponent.builder()
+               .petrolEngineModule(PetrolEngineModule(100)).build()
+                 carComponent.injectMainActivityforFieldInject(this)
+              car.startCar()
+
+
         //@B-Implementation injecting
-        val carComponent = DaggerCarComponent.create()
-        carComponent.injectMainActivityforFieldInject(this)
-        car.startCar()
+//        val carComponent = DaggerCarComponent.create()
+//        carComponent.injectMainActivityforFieldInject(this)
+//        car.startCar()
 
     //@A-Implementation
         // manually injecting this way

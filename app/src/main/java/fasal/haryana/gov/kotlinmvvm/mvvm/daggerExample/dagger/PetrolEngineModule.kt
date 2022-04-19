@@ -5,11 +5,11 @@ import dagger.Provides
 import fasal.haryana.gov.kotlinmvvm.mvvm.daggerExample.Engine
 
 @Module
-class PetrolEngineModule {
+class PetrolEngineModule (var powerCapacity:Int){
 
     @Provides
-    fun providesPetrolEngineDetails(petrolEngine: PetrolEngine):Engine{
-        return petrolEngine
+    fun providesPetrolEngineDetails():Engine{
+        return PetrolEngine(powerCapacity)
     }
 
 }
