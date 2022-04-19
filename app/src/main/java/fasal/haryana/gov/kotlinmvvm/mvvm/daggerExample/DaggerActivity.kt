@@ -8,7 +8,9 @@ import javax.inject.Inject
 
 class DaggerActivity : AppCompatActivity() {
 
-    /*injecting Field in dagger*/
+    /*injecting Field in Activity so no need to initilize it */
+    /*we are directly using car object as it is injecting*/
+
     @Inject
      lateinit var car: Car
 
