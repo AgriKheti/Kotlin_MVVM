@@ -14,6 +14,7 @@ class Car {
     }
 
     fun startCar(){
+        engine.startEngine()
         println("driving..")
     }
 }

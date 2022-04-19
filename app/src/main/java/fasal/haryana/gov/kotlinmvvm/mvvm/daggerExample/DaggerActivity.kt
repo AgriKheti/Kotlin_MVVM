@@ -20,12 +20,9 @@ class DaggerActivity : AppCompatActivity() {
 
 
         //@B-Implementation injecting
-        var carComponent = DaggerCarComponent.create()
+        val carComponent = DaggerCarComponent.create()
         carComponent.injectMainActivityforFieldInject(this)
-
         car.startCar()
-        car1.startCar()
-
 
     //@A-Implementation
         // manually injecting this way
