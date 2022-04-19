@@ -8,7 +8,9 @@ import javax.inject.Inject
 /*so in that case dagger will use wheelModule class to create object of third party class
 * or interface */
 
-class Wheels {
+class Wheels @Inject constructor(private var rims: Rims
+      , private var tyres: Tyres) {
+    /*now suppose wheel is dependent on two more objects*/
 
 
 }
