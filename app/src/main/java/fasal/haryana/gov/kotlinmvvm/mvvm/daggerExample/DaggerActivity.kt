@@ -12,8 +12,9 @@ class DaggerActivity : AppCompatActivity() {
     @Inject
      lateinit var car: Car
 
-     @Inject
-     lateinit var car1:Car
+
+//     @Inject  it will auto create and call funtions of Dagger  as we have created the object like "println() fun "
+//     lateinit var car1:Car
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dagger)
