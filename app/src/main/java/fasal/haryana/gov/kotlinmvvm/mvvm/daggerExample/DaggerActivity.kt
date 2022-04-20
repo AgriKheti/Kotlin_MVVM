@@ -11,7 +11,6 @@ class DaggerActivity : AppCompatActivity() {
 
     /*injecting Field in Activity so no need to initilize it */
     /*we are directly using car object as it is injecting*/
-
     @Inject
      lateinit var car: Car
 
@@ -27,7 +26,6 @@ class DaggerActivity : AppCompatActivity() {
                .petrolEngineModule(PetrolEngineModule(100)).build()
                  carComponent.injectMainActivityforFieldInject(this)
               car.startCar()
-
 
         //@B-Implementation injecting
 //        val carComponent = DaggerCarComponent.create()
